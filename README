@@ -1,0 +1,23 @@
+----------------------------------------------------------------------
+SLOG "status logging"
+
+Kris Beevers
+kbeevers@voxel.net
+
+2008 -- 2009
+----------------------------------------------------------------------
+
+An "RRD-like" mechanism for storing "diff logs" --- basically log
+entries indicating status changes.  It uses a sqlite backend.
+Whenever an update occurs, it is _only_ stored in the database if
+there is a change from the preceding log entry.
+
+There are Perl and PHP libraries here.  There is also an example
+application, makespark.pl, that generates "sparkline" graphs from data
+spanning multiple SLOGs with some specific server status data.  The
+example data is reachability data to a specific server from a variety
+of monitoring locations and includes status values of "up", "down",
+"nodns" (DNS lookup failed), and "unknown".  Try running
+`./makespark.pl slog/*.slog` to generate a simple "sparkline" with
+rows corresponding to monitoring locations, x-axis as time, and color
+coding of status.
